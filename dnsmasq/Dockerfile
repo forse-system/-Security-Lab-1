@@ -12,6 +12,4 @@ RUN mkdir -p /etc/dnsmasq && \
 EXPOSE 53 53/udp
 
 # Use environment variable for cache IP configuration
-# 変更: デフォルトキャッシュIPを10.10.0.14から192.168.115.151に更新
-# 理由: 新しいネットワーク構成要件に合わせるため
 CMD sh -c "echo server=\${CACHE_IP:-192.168.115.151} >> /etc/dnsmasq/dnsmasq.conf && echo Starting dnsmasq with cache IP: \${CACHE_IP:-192.168.115.151} && cat /etc/dnsmasq/dnsmasq.conf && /usr/local/sbin/dnsmasq -k --log-facility=- --conf-file=/etc/dnsmasq/dnsmasq.conf"
