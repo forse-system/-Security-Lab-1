@@ -11,7 +11,7 @@ LISTEN_IP = "0.0.0.0"
 LISTEN_PORT = 53
 UPSTREAM_DNS = os.environ.get('UPSTREAM_DNS', "8.8.8.8")
 UPSTREAM_PORT = 53
-DELAY = float(os.environ.get('DNS_DELAY', "5.0"))  # 5 seconds delay to give attacker more chance
+DELAY = float(os.environ.get('DNS_DELAY', "2.0"))  # 2 seconds delay to give attacker more chance
 
 def packet_sniffer():
     """Original packet sniffer function"""
