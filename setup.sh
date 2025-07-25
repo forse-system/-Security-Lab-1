@@ -16,3 +16,6 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 sudo apt-get install dnsutils -y
 
 sudo bash -c 'mkdir -p /etc/systemd/resolved.conf.d && printf "[Resolve]\nDNSStubListener=no\n" > /etc/systemd/resolved.conf.d/no-stub.conf && systemctl restart systemd-resolved'
+sudo sh -c 'H=$(hostname -s); F=$(hostname -f 2>/dev/null || echo "$H.localdomain"); \
+grep -qE "^127\.0\.1\.1[[:space:]]+$H(\s|$)" /etc/hosts || \
+echo "127.0.1.1 $H $F" >> /etc/hosts'
